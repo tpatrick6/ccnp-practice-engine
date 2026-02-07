@@ -1,0 +1,2882 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CCNP ENSLD 300-420 Practice Engine</title>
+  <style>
+    /* ============================================
+       CCNP ENSLD 300-420 Practice Engine
+       Professional Blue & Silver Theme
+       ============================================ */
+    
+    :root {
+      --blue-dark: #1e40af;
+      --blue-primary: #2563eb;
+      --blue-light: #3b82f6;
+      --blue-lighter: #60a5fa;
+      --blue-bg: #dbeafe;
+      --silver: #94a3b8;
+      --silver-light: #cbd5e1;
+      --silver-lighter: #e2e8f0;
+      --silver-bg: #f1f5f9;
+      --dark: #1e293b;
+      --dark-light: #334155;
+      --success: #10b981;
+      --error: #ef4444;
+      --white: #ffffff;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, var(--silver-bg) 0%, var(--blue-bg) 100%);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    
+    /* Header/Branding */
+    .header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-primary) 100%);
+      color: var(--white);
+      padding: 24px 32px;
+      box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
+      margin-bottom: 32px;
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    
+    .header-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .header-subtitle {
+      font-size: 16px;
+      color: var(--blue-bg);
+      font-weight: 400;
+      margin: 4px 0 0 0;
+    }
+    
+    .header-badge {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px 32px;
+    }
+    
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(30, 64, 175, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+      padding: 36px;
+      margin-bottom: 24px;
+      border: 1px solid var(--silver-lighter);
+    }
+    
+    /* Typography */
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 0 0 24px 0;
+      letter-spacing: -0.02em;
+    }
+    
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 0 0 16px 0;
+    }
+    
+    /* Top Bar */
+    .topbar {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 0 0 28px 0;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--silver-lighter);
+    }
+    
+    .meta {
+      font-size: 18px;
+      color: var(--dark-light);
+      font-weight: 600;
+      padding: 8px 16px;
+      background: var(--silver-bg);
+      border-radius: 8px;
+      border: 1px solid var(--silver-light);
+    }
+    
+    /* Buttons */
+    button {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    button.primary {
+      background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-light) 100%);
+      color: var(--white);
+      border: 1px solid var(--blue-dark);
+    }
+    
+    button.primary:hover {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-primary) 100%);
+    }
+    
+    button.secondary {
+      background: var(--silver-lighter);
+      color: var(--dark);
+      border: 1px solid var(--silver);
+    }
+    
+    button.secondary:hover {
+      background: var(--silver-light);
+    }
+    
+    button[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+    
+    /* Question Display */
+    .question {
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--dark);
+      margin: 0 0 24px 0;
+      font-weight: 500;
+    }
+    
+    /* Exhibit */
+    .exhibit {
+      margin: 0 0 28px 0;
+      background: var(--silver-bg);
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid var(--silver-lighter);
+    }
+    
+    .exhibit img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 2px solid var(--silver-light);
+      background: var(--white);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    .exhibit-caption {
+      text-align: center;
+      color: var(--dark-light);
+      margin-top: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Answer Options */
+    .option {
+      font-size: 18px;
+      margin: 16px 0;
+      transition: all 0.2s ease;
+    }
+    
+    .option label {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      cursor: pointer;
+      padding: 16px;
+      border-radius: 10px;
+      border: 2px solid var(--silver-lighter);
+      background: var(--white);
+      transition: all 0.2s ease;
+    }
+    
+    .option label:hover {
+      border-color: var(--blue-light);
+      background: var(--blue-bg);
+      transform: translateX(4px);
+    }
+    
+    .option input {
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--blue-primary);
+    }
+    
+    .option input:checked + .option-content {
+      color: var(--blue-dark);
+      font-weight: 600;
+    }
+    
+    .option strong {
+      min-width: 32px;
+      color: var(--blue-primary);
+      font-weight: 700;
+      font-size: 20px;
+    }
+    
+    /* Setup/Config Panel */
+    .setup {
+      background: linear-gradient(135deg, var(--white) 0%, var(--silver-bg) 100%);
+      border: 2px solid var(--silver-lighter);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 0 0 24px 0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+    
+    .setup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 24px;
+      align-items: start;
+    }
+    
+    .field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 0 0 8px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .field input[type="text"],
+    .field input[type="number"],
+    .field select {
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 2px solid var(--silver-light);
+      background: var(--white);
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    
+    .field input:focus,
+    .field select:focus {
+      outline: none;
+      border-color: var(--blue-primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    .checks {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    
+    .checks label {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 16px;
+      color: var(--dark);
+      padding: 12px;
+      background: var(--white);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+    
+    .checks label:hover {
+      border-color: var(--blue-light);
+      background: var(--blue-bg);
+    }
+    
+    .checks input {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: var(--blue-primary);
+    }
+    
+    /* Feedback */
+    .feedback {
+      margin: 24px 0 0;
+      font-size: 16px;
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: 2px solid;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+    
+    .feedback.ok {
+      border-color: var(--success);
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      color: #065f46;
+    }
+    
+    .feedback.bad {
+      border-color: var(--error);
+      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+      color: #991b1b;
+    }
+    
+    /* Hint/Muted Text */
+    .hint {
+      padding: 12px 0;
+      color: var(--dark-light);
+      font-size: 16px;
+      font-weight: 500;
+    }
+    
+    .muted {
+      color: var(--silver);
+      font-size: 14px;
+      margin-top: 8px;
+      font-style: italic;
+    }
+    
+    /* Results */
+    #results h2 {
+      color: var(--blue-dark);
+      margin-bottom: 24px;
+    }
+    
+    #resultsSummary {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--blue-primary);
+      padding: 20px;
+      background: var(--blue-bg);
+      border-radius: 12px;
+      text-align: center;
+      border: 2px solid var(--blue-light);
+    }
+    
+    #resultsDetails {
+      margin-top: 20px;
+      padding: 20px;
+      background: var(--silver-bg);
+      border-radius: 10px;
+      white-space: pre-wrap;
+      font-family: 'Courier New', monospace;
+      font-size: 15px;
+      color: var(--dark);
+      border: 1px solid var(--silver-light);
+    }
+    
+    /* Responsive */
+    @media (max-width: 820px) {
+      .header {
+        padding: 20px 16px;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .container {
+        padding: 0 16px 16px;
+      }
+      
+      .card {
+        padding: 24px;
+      }
+      
+      .setup-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .question {
+        font-size: 18px;
+      }
+      
+      .option {
+        font-size: 16px;
+      }
+    }
+    
+    /* Loading State */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    
+    button[disabled].primary {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <!-- Professional Header -->
+  <div class="header">
+    <div class="header-content">
+      <div>
+        <h1 class="header-title" id="examTitle">Loading...</h1>
+        <p class="header-subtitle" id="examSubtitle">Please wait...</p>
+      </div>
+      <div class="header-badge">Practice Test Engine</div>
+    </div>
+  </div>
+
+  <!-- Exam Selector -->
+  <div class="container" style="margin-bottom: 16px;">
+    <div class="card" style="padding: 20px;">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <label for="examSelect" style="font-weight: 600; font-size: 16px; color: #1e293b; white-space: nowrap;">Select Exam:</label>
+        <select id="examSelect" style="flex: 1; padding: 12px 16px; font-size: 15px; border: 2px solid #cbd5e1; border-radius: 8px; background: white; color: #1e293b; cursor: pointer; font-family: inherit;">
+          <option value="">Loading exams...</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <div class="card">
+    <h1>Test Configuration</h1>
+
+    <div class="topbar">
+      <button id="startBtn" class="primary" disabled>Loading…</button>
+      <div class="meta" id="meta"></div>
+    </div>
+
+    <!-- Start Menu (safe options only) -->
+    <div class="setup" id="setup">
+      <div class="setup-grid">
+        <div class="field">
+          <label for="numQuestions">Number of Questions</label>
+          <input id="numQuestions" type="number" min="1" placeholder="e.g. 10" />
+          <div class="muted">Leave blank to use all questions from the filtered pool.</div>
+        </div>
+
+        <div class="field">
+          <label for="questionTypeSelect">Question Type</label>
+          <select id="questionTypeSelect">
+            <option value="__ALL__">All</option>
+            <option value="mcq-single">MCQ - Single Answer</option>
+            <option value="mcq-multiple">MCQ - Multiple Answer</option>
+            <option value="mcq-single-exhibit">MCQ - Single (with Exhibit)</option>
+            <option value="mcq-multiple-exhibit">MCQ - Multiple (with Exhibit)</option>
+            <option value="drag-drop">Drag &amp; Drop</option>
+            <option value="__EXHIBITS__">All Exhibit Questions</option>
+            <option value="__MISSED__">Missed Questions Only</option>
+          </select>
+        </div>
+
+        <div class="field" id="categoryField" style="display:none;">
+          <label for="categorySelect">Category</label>
+          <select id="categorySelect">
+            <option value="__ALL__">All</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="checks">
+        <label><input type="checkbox" id="immediateFeedback" /> Enable Immediate Feedback</label>
+        <label><input type="checkbox" id="sequentialOrder" /> Sequential Order (no question shuffle)</label>
+        <label><input type="checkbox" id="questionRangeEnabled" /> Use Question Range</label>
+        <div class="field" id="rangeField" style="display:none;">
+          <label for="questionRange">Question Range (e.g. 5-10,21,33-40)</label>
+          <input id="questionRange" type="text" placeholder="e.g. 5-10,21,33-40" />
+          <div class="muted">Range targets question <b>id</b> if present, otherwise the question number in the JSON list.</div>
+        </div>
+        
+        <label><input type="checkbox" id="timerEnabled" /> Enable Timer</label>
+        <div class="field" id="timerField" style="display:none;">
+          <label for="timerMode">Timer Mode</label>
+          <select id="timerMode">
+            <option value="total">Total Quiz Time</option>
+            <option value="per_question">Time Per Question</option>
+          </select>
+          <label for="timerDuration" style="margin-top: 12px;">Duration (minutes for total, seconds per question)</label>
+          <input id="timerDuration" type="number" min="1" value="30" placeholder="30" />
+        </div>
+      </div>
+      
+      <!-- Score History & Data Management -->
+      <div id="scoreHistory" style="margin-top: 20px; padding: 16px; background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); border-radius: 10px; border: 2px solid #cbd5e1;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.5px;">Score History</h3>
+          <button id="clearDataBtn" class="secondary" style="padding: 6px 12px; font-size: 14px;">Clear All Data</button>
+        </div>
+        <div id="scoreStats" style="font-size: 14px; color: #334155;"></div>
+      </div>
+    </div>
+
+    <div id="quiz" style="display:none;">
+      <!-- Timer Display -->
+      <div id="timerDisplay" style="display:none; position: fixed; top: 100px; right: 32px; background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); padding: 16px 24px; border-radius: 12px; border: 2px solid #ef4444; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); z-index: 1000;">
+        <div style="font-size: 14px; font-weight: 600; color: #991b1b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Time Remaining</div>
+        <div id="timerValue" style="font-size: 32px; font-weight: 700; color: #dc2626; font-family: 'Courier New', monospace;">--:--</div>
+      </div>
+      
+      <div class="exhibit" id="exhibit"></div>
+      <div class="question" id="question"></div>
+      <div id="options"></div>
+      <div id="feedback" style="display:none;"></div>
+      <div style="margin-top:14px; display: flex; gap: 12px; align-items: center;">
+        <button class="primary" id="nextBtn">Next</button>
+        <button class="secondary" id="endQuizBtn">End Quiz</button>
+        <div id="progressIndicator" style="margin-left: auto; font-size: 14px; color: #64748b; font-weight: 600;"></div>
+      </div>
+    </div>
+
+
+    <div id="results" style="display:none;">
+      <h2 style="margin:18px 0 8px;font-size:28px;">Results</h2>
+      <div id="resultsSummary" class="hint" style="margin-bottom:20px;"></div>
+      
+      <!-- Compact Analytics Summary -->
+      <div id="compactAnalytics" style="margin-bottom: 24px; padding: 20px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; border: 2px solid #3b82f6;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #1e3a8a;">🎯 Performance Summary</h3>
+          <button id="viewFullAnalyticsBtn" class="secondary" style="padding: 8px 16px; font-size: 14px; background: #3b82f6; color: white; border-color: #2563eb;">View Full Analytics</button>
+        </div>
+        <div id="compactAnalyticsContent" style="font-size: 15px; color: #1e293b; line-height: 1.8;">
+          <!-- Will be populated by JavaScript -->
+        </div>
+      </div>
+      
+      <!-- Question Review Section -->
+      <div id="questionReview" style="margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #1e293b;">Question Review</h3>
+          <div style="display: flex; gap: 12px;">
+            <button id="reviewFilterAll" class="secondary" style="padding: 8px 16px; font-size: 14px;">Show All</button>
+            <button id="reviewFilterMissed" class="secondary" style="padding: 8px 16px; font-size: 14px;">Missed Only</button>
+          </div>
+        </div>
+        
+        <div id="reviewList" style="max-height: 500px; overflow-y: auto; border: 2px solid #cbd5e1; border-radius: 10px; background: #f8fafc; padding: 16px;">
+          <!-- Review items will be inserted here -->
+        </div>
+      </div>
+      
+      <div id="resultsDetails" class="hint" style="white-space:pre-wrap; margin-bottom: 16px;"></div>
+      <div style="margin-top:14px">
+        <button class="primary" id="restartBtn">Start Over</button>
+      </div>
+    </div>
+
+    <!-- Analytics Dashboard (Full) -->
+    <div id="analytics" style="display:none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2 style="margin:0;font-size:28px;">📊 Analytics Dashboard</h2>
+        <button id="backFromAnalyticsBtn" class="secondary">Back to Results</button>
+      </div>
+      
+      <!-- Summary Cards -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px;">
+        <div style="padding: 20px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; border: 2px solid #3b82f6;">
+          <div style="font-size: 14px; color: #1e3a8a; font-weight: 600; margin-bottom: 8px;">Tests Taken</div>
+          <div id="analyticsTestsTaken" style="font-size: 32px; font-weight: 700; color: #1e3a8a;">0</div>
+        </div>
+        <div style="padding: 20px; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px; border: 2px solid: #10b981;">
+          <div style="font-size: 14px; color: #065f46; font-weight: 600; margin-bottom: 8px;">Average Score</div>
+          <div id="analyticsAvgScore" style="font-size: 32px; font-weight: 700; color: #065f46;">0%</div>
+        </div>
+        <div style="padding: 20px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; border: 2px solid #f59e0b;">
+          <div style="font-size: 14px; color: #78350f; font-weight: 600; margin-bottom: 8px;">Best Score</div>
+          <div id="analyticsBestScore" style="font-size: 32px; font-weight: 700; color: #78350f;">0%</div>
+        </div>
+      </div>
+      
+      <!-- Accuracy by Question Type -->
+      <div style="margin-bottom: 32px; padding: 24px; background: #ffffff; border-radius: 12px; border: 2px solid #e2e8f0;">
+        <h3 style="margin: 0 0 20px 0; font-size: 20px; font-weight: 700; color: #1e293b;">Accuracy by Question Type</h3>
+        <div id="typePerformanceChart"></div>
+      </div>
+      
+      <!-- Accuracy by Category -->
+      <div style="margin-bottom: 32px; padding: 24px; background: #ffffff; border-radius: 12px; border: 2px solid #e2e8f0;">
+        <h3 style="margin: 0 0 20px 0; font-size: 20px; font-weight: 700; color: #1e293b;">Accuracy by Category</h3>
+        <div id="categoryPerformanceChart"></div>
+      </div>
+      
+      <!-- Two Column Layout -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px;">
+        <!-- Top 5 Weakest Categories -->
+        <div style="padding: 24px; background: #ffffff; border-radius: 12px; border: 2px solid #e2e8f0;">
+          <h3 style="margin: 0 0 20px 0; font-size: 20px; font-weight: 700; color: #1e293b;">⚠️ Top 5 Weakest Categories</h3>
+          <div id="weakestCategories"></div>
+        </div>
+        
+        <!-- Most Missed Questions -->
+        <div style="padding: 24px; background: #ffffff; border-radius: 12px; border: 2px solid #e2e8f0;">
+          <h3 style="margin: 0 0 20px 0; font-size: 20px; font-weight: 700; color: #1e293b;">Most Missed Questions</h3>
+          <div id="mostMissedQuestions"></div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 24px;">
+        <button class="primary" id="backFromAnalyticsBtn2">Back to Results</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- End Card -->
+  
+  </div>
+  <!-- End Container -->
+
+<script>
+
+// DEPRECATED: This function is no longer needed since questions now have a "questionType" field
+// Kept for backward compatibility only
+function inferQuestionType(q){
+  if (q.dragItems || q.dropZones || q.type === 'dragdrop') return 'dragdrop';
+  if (Array.isArray(q.answer) && q.answer.length > 1) return 'multi';
+  return 'mcq';
+}
+function hasExhibit(q){
+  // Prefer explicit exhibit field, otherwise consult manifest map
+  if (q && q.exhibit) {
+    if (Array.isArray(q.exhibit) && q.exhibit.length > 0) return true;
+    if (typeof q.exhibit === 'object') {
+      const exSrc = q.exhibit.src || q.exhibit.file || q.exhibit.path || q.exhibit.url;
+      if (exSrc) return true;
+    }
+  }
+  const qnum = q && (q.question_number || q.id || q._qnum);
+  return !!(qnum && exhibitMap && exhibitMap.has(Number(qnum)));
+}
+
+let exhibitMap = new Map(); // question_number -> [files]
+let questions = [];
+let quizList = []; // the filtered list for the current run
+let index = 0;
+let answers = {}; // { idx: ['A'] or ['A','C'] }
+let feedbackShown = {};
+let results = []; // [{ok:boolean, qnum:number}]
+let config = {
+  numQuestions: null,
+  category: '__ALL__',
+  immediateFeedback: false,
+  sequential: false,
+  range: null,
+  timerEnabled: false,
+  timerMode: 'total', // 'total' or 'per_question'
+  timerDuration: 30, // minutes for total, seconds for per_question
+};
+
+// Timer variables
+let timerInterval = null;
+let timeRemaining = 0; // in seconds
+let timerStartTime = 0;
+
+function startTimer() {
+  if (!config.timerEnabled) return;
+  
+  // Calculate total time in seconds
+  if (config.timerMode === 'total') {
+    timeRemaining = config.timerDuration * 60; // Convert minutes to seconds
+  } else {
+    timeRemaining = config.timerDuration * quizList.length; // seconds per question * num questions
+  }
+  
+  timerStartTime = Date.now();
+  document.getElementById('timerDisplay').style.display = 'block';
+  updateTimerDisplay();
+  
+  timerInterval = setInterval(() => {
+    const elapsed = Math.floor((Date.now() - timerStartTime) / 1000);
+    timeRemaining = (config.timerMode === 'total' ? config.timerDuration * 60 : config.timerDuration * quizList.length) - elapsed;
+    
+    if (timeRemaining <= 0) {
+      timeRemaining = 0;
+      updateTimerDisplay();
+      stopTimer();
+      alert('Time\'s up! The quiz will now be submitted.');
+      showResults();
+      return;
+    }
+    
+    updateTimerDisplay();
+    
+    // Warning at 5 minutes remaining
+    if (timeRemaining === 300) {
+      alert('Warning: 5 minutes remaining!');
+    }
+  }, 1000);
+}
+
+function stopTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+}
+
+function updateTimerDisplay() {
+  const timerValue = document.getElementById('timerValue');
+  if (!timerValue) return;
+  
+  const minutes = Math.floor(timeRemaining / 60);
+  const seconds = timeRemaining % 60;
+  timerValue.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  
+  // Change color when time is low
+  const timerDisplay = document.getElementById('timerDisplay');
+  if (timeRemaining <= 60) {
+    // Last minute - red and pulsing
+    timerDisplay.style.background = 'linear-gradient(135deg, #fee2e2 0%, #fecaca 100%)';
+    timerDisplay.style.animation = 'pulse 1s ease-in-out infinite';
+  } else if (timeRemaining <= 300) {
+    // Last 5 minutes - orange
+    timerDisplay.style.background = 'linear-gradient(135deg, #fed7aa 0%, #fdba74 100%)';
+    timerDisplay.style.borderColor = '#f97316';
+  }
+}
+
+// ============================================
+// Exam Management
+// ============================================
+
+let currentExam = null; // Will hold examInfo for selected exam
+let allQuestions = []; // Will hold all questions for selected exam
+let availableExams = []; // List of available exams from index.json
+const EXAMS_FOLDER = './exams/';
+
+// Dynamic storage keys based on selected exam
+function getStorageKeys() {
+  const prefix = currentExam ? currentExam.storagePrefix : 'default';
+  return {
+    MISSED_QUESTIONS: `${prefix}_missed_questions`,
+    SCORE_HISTORY: `${prefix}_score_history`,
+    QUESTION_HISTORY: `${prefix}_question_history`,
+    CATEGORY_PERFORMANCE: `${prefix}_category_performance`,
+    TYPE_PERFORMANCE: `${prefix}_type_performance`
+  };
+}
+
+// Storage keys - will be updated when exam is loaded
+let STORAGE_KEYS = {
+  MISSED_QUESTIONS: 'default_missed_questions',
+  SCORE_HISTORY: 'default_score_history',
+  QUESTION_HISTORY: 'default_question_history',
+  CATEGORY_PERFORMANCE: 'default_category_performance',
+  TYPE_PERFORMANCE: 'default_type_performance'
+};
+
+function getMissedQuestions() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEYS.MISSED_QUESTIONS);
+    return data ? JSON.parse(data) : [];
+  } catch (e) {
+    console.error('Error loading missed questions:', e);
+    return [];
+  }
+}
+
+function addMissedQuestion(qnum) {
+  try {
+    const missed = getMissedQuestions();
+    if (!missed.includes(qnum)) {
+      missed.push(qnum);
+      localStorage.setItem(STORAGE_KEYS.MISSED_QUESTIONS, JSON.stringify(missed));
+    }
+  } catch (e) {
+    console.error('Error saving missed question:', e);
+  }
+}
+
+function removeMissedQuestion(qnum) {
+  try {
+    let missed = getMissedQuestions();
+    missed = missed.filter(q => q !== qnum);
+    localStorage.setItem(STORAGE_KEYS.MISSED_QUESTIONS, JSON.stringify(missed));
+  } catch (e) {
+    console.error('Error removing missed question:', e);
+  }
+}
+
+function clearMissedQuestions() {
+  try {
+    localStorage.removeItem(STORAGE_KEYS.MISSED_QUESTIONS);
+  } catch (e) {
+    console.error('Error clearing missed questions:', e);
+  }
+}
+
+function getScoreHistory() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEYS.SCORE_HISTORY);
+    return data ? JSON.parse(data) : [];
+  } catch (e) {
+    console.error('Error loading score history:', e);
+    return [];
+  }
+}
+
+function addScoreToHistory(score) {
+  try {
+    const history = getScoreHistory();
+    history.push({
+      date: new Date().toISOString(),
+      score: score.correct,
+      total: score.total,
+      percentage: score.percentage,
+      timestamp: Date.now()
+    });
+    // Keep last 50 scores
+    if (history.length > 50) {
+      history.shift();
+    }
+    localStorage.setItem(STORAGE_KEYS.SCORE_HISTORY, JSON.stringify(history));
+  } catch (e) {
+    console.error('Error saving score:', e);
+  }
+}
+
+function clearScoreHistory() {
+  try {
+    localStorage.removeItem(STORAGE_KEYS.SCORE_HISTORY);
+  } catch (e) {
+    console.error('Error clearing score history:', e);
+  }
+}
+
+function clearAllData() {
+  if (confirm('Are you sure you want to clear all data?\n\nThis will remove:\n• All missed questions\n• All score history\n• All analytics data\n\nThis action cannot be undone.')) {
+    clearMissedQuestions();
+    clearScoreHistory();
+    clearQuestionHistory();
+    clearCategoryPerformance();
+    clearTypePerformance();
+    updateScoreDisplay();
+    alert('All data has been cleared.');
+  }
+}
+
+// ============================================
+// Analytics Tracking Functions
+// ============================================
+
+function getQuestionHistory() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEYS.QUESTION_HISTORY);
+    return data ? JSON.parse(data) : {};
+  } catch (e) {
+    console.error('Error loading question history:', e);
+    return {};
+  }
+}
+
+function updateQuestionHistory(questionNum, isCorrect, category, type) {
+  try {
+    const history = getQuestionHistory();
+    
+    if (!history[questionNum]) {
+      history[questionNum] = {
+        attempts: 0,
+        correct: 0,
+        incorrect: 0,
+        lastAttempt: null,
+        category: category,
+        type: type,
+        consecutiveCorrect: 0
+      };
+    }
+    
+    history[questionNum].attempts++;
+    history[questionNum].lastAttempt = new Date().toISOString();
+    
+    if (isCorrect) {
+      history[questionNum].correct++;
+      history[questionNum].consecutiveCorrect++;
+      
+      // Reset missed count if mastered (3 correct in a row)
+      if (history[questionNum].consecutiveCorrect >= 3) {
+        history[questionNum].incorrect = 0;
+        history[questionNum].consecutiveCorrect = 0; // Reset counter
+      }
+    } else {
+      history[questionNum].incorrect++;
+      history[questionNum].consecutiveCorrect = 0; // Reset streak
+    }
+    
+    localStorage.setItem(STORAGE_KEYS.QUESTION_HISTORY, JSON.stringify(history));
+  } catch (e) {
+    console.error('Error updating question history:', e);
+  }
+}
+
+function clearQuestionHistory() {
+  try {
+    localStorage.removeItem(STORAGE_KEYS.QUESTION_HISTORY);
+  } catch (e) {
+    console.error('Error clearing question history:', e);
+  }
+}
+
+function getCategoryPerformance() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEYS.CATEGORY_PERFORMANCE);
+    return data ? JSON.parse(data) : {};
+  } catch (e) {
+    console.error('Error loading category performance:', e);
+    return {};
+  }
+}
+
+function updateCategoryPerformance(category, isCorrect) {
+  try {
+    const performance = getCategoryPerformance();
+    
+    if (!performance[category]) {
+      performance[category] = {
+        correct: 0,
+        total: 0,
+        percentage: 0,
+        lastUpdated: null
+      };
+    }
+    
+    performance[category].total++;
+    if (isCorrect) {
+      performance[category].correct++;
+    }
+    performance[category].percentage = (performance[category].correct / performance[category].total) * 100;
+    performance[category].lastUpdated = new Date().toISOString();
+    
+    localStorage.setItem(STORAGE_KEYS.CATEGORY_PERFORMANCE, JSON.stringify(performance));
+  } catch (e) {
+    console.error('Error updating category performance:', e);
+  }
+}
+
+function clearCategoryPerformance() {
+  try {
+    localStorage.removeItem(STORAGE_KEYS.CATEGORY_PERFORMANCE);
+  } catch (e) {
+    console.error('Error clearing category performance:', e);
+  }
+}
+
+function getTypePerformance() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEYS.TYPE_PERFORMANCE);
+    return data ? JSON.parse(data) : {};
+  } catch (e) {
+    console.error('Error loading type performance:', e);
+    return {};
+  }
+}
+
+function updateTypePerformance(type, isCorrect) {
+  try {
+    const performance = getTypePerformance();
+    
+    if (!performance[type]) {
+      performance[type] = {
+        correct: 0,
+        total: 0,
+        percentage: 0,
+        lastUpdated: null
+      };
+    }
+    
+    performance[type].total++;
+    if (isCorrect) {
+      performance[type].correct++;
+    }
+    performance[type].percentage = (performance[type].correct / performance[type].total) * 100;
+    performance[type].lastUpdated = new Date().toISOString();
+    
+    localStorage.setItem(STORAGE_KEYS.TYPE_PERFORMANCE, JSON.stringify(performance));
+  } catch (e) {
+    console.error('Error updating type performance:', e);
+  }
+}
+
+function clearTypePerformance() {
+  try {
+    localStorage.removeItem(STORAGE_KEYS.TYPE_PERFORMANCE);
+  } catch (e) {
+    console.error('Error clearing type performance:', e);
+  }
+}
+
+function getMostMissedQuestions(limit = 10) {
+  const history = getQuestionHistory();
+  
+  // Convert to array and filter for questions with misses
+  const missed = Object.entries(history)
+    .filter(([_, data]) => data.incorrect > 0)
+    .map(([qnum, data]) => ({
+      questionNum: parseInt(qnum),
+      missCount: data.incorrect,
+      attempts: data.attempts,
+      category: data.category,
+      type: data.type,
+      lastAttempt: data.lastAttempt
+    }))
+    .sort((a, b) => b.missCount - a.missCount) // Sort by miss count descending
+    .slice(0, limit);
+  
+  return missed;
+}
+
+function getWeakestCategories(limit = 5) {
+  const performance = getCategoryPerformance();
+  
+  // Convert to array and sort by percentage ascending
+  const weakest = Object.entries(performance)
+    .map(([category, data]) => ({
+      category,
+      correct: data.correct,
+      total: data.total,
+      percentage: data.percentage
+    }))
+    .filter(item => item.total >= 3) // Only include categories with at least 3 attempts
+    .sort((a, b) => a.percentage - b.percentage) // Sort by percentage ascending
+    .slice(0, limit);
+  
+  return weakest;
+}
+
+// ============================================
+// Analytics Display Functions
+// ============================================
+
+function buildCompactAnalytics() {
+  const contentDiv = document.getElementById('compactAnalyticsContent');
+  if (!contentDiv) return;
+  
+  const typePerf = getTypePerformance();
+  const catPerf = getCategoryPerformance();
+  const weakest = getWeakestCategories(3);
+  const mostMissed = getMostMissedQuestions(3);
+  
+  let html = '';
+  
+  // By Type - show weakest
+  const typeArray = Object.entries(typePerf)
+    .map(([type, data]) => ({ type, ...data }))
+    .sort((a, b) => a.percentage - b.percentage);
+  
+  if (typeArray.length > 0) {
+    const weakestType = typeArray[0];
+    const strongestType = typeArray[typeArray.length - 1];
+    
+    html += `<div style="margin-bottom: 12px;"><strong>By Type:</strong> `;
+    html += `Strongest: ${formatTypeName(strongestType.type)} (${strongestType.percentage.toFixed(0)}%) ⭐, `;
+    html += `Weakest: ${formatTypeName(weakestType.type)} (${weakestType.percentage.toFixed(0)}%)`;
+    if (weakestType.percentage < 70) html += ' ⚠️';
+    html += `</div>`;
+  }
+  
+  // Weakest categories
+  if (weakest.length > 0) {
+    html += `<div style="margin-bottom: 12px;"><strong>Weakest Categories:</strong> `;
+    html += weakest.map(w => `${w.category} (${w.percentage.toFixed(0)}%)`).join(', ');
+    if (weakest[0].percentage < 70) html += ' ⚠️';
+    html += `</div>`;
+  }
+  
+  // Most missed
+  if (mostMissed.length > 0) {
+    html += `<div><strong>Most Missed:</strong> `;
+    html += mostMissed.map(m => `Q${m.questionNum} (${m.missCount}×)`).join(', ');
+    html += `</div>`;
+  }
+  
+  if (html === '') {
+    html = '<div style="font-style: italic; color: #64748b;">Complete more quizzes to see analytics.</div>';
+  }
+  
+  contentDiv.innerHTML = html;
+}
+
+function buildFullAnalytics() {
+  // Summary cards
+  const history = getScoreHistory();
+  document.getElementById('analyticsTestsTaken').textContent = history.length;
+  
+  if (history.length > 0) {
+    const avgScore = history.reduce((sum, s) => sum + s.percentage, 0) / history.length;
+    const bestScore = Math.max(...history.map(s => s.percentage));
+    document.getElementById('analyticsAvgScore').textContent = Math.round(avgScore) + '%';
+    document.getElementById('analyticsBestScore').textContent = bestScore + '%';
+  } else {
+    document.getElementById('analyticsAvgScore').textContent = '0%';
+    document.getElementById('analyticsBestScore').textContent = '0%';
+  }
+  
+  // Type performance chart
+  buildTypePerformanceChart();
+  
+  // Category performance chart
+  buildCategoryPerformanceChart();
+  
+  // Weakest categories
+  buildWeakestCategoriesSection();
+  
+  // Most missed questions
+  buildMostMissedSection();
+}
+
+function formatTypeName(type) {
+  const names = {
+    'mcq-single': 'MCQ Single',
+    'mcq-multiple': 'MCQ Multiple',
+    'mcq-single-exhibit': 'MCQ Single w/Exhibit',
+    'mcq-multiple-exhibit': 'MCQ Multiple w/Exhibit',
+    'drag-drop': 'Drag & Drop'
+  };
+  return names[type] || type;
+}
+
+function buildTypePerformanceChart() {
+  const chartDiv = document.getElementById('typePerformanceChart');
+  if (!chartDiv) return;
+  
+  const performance = getTypePerformance();
+  const types = Object.entries(performance)
+    .map(([type, data]) => ({
+      type: formatTypeName(type),
+      ...data
+    }))
+    .sort((a, b) => b.percentage - a.percentage);
+  
+  if (types.length === 0) {
+    chartDiv.innerHTML = '<div style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No data yet. Complete a quiz to see your performance by question type.</div>';
+    return;
+  }
+  
+  let html = '';
+  types.forEach(item => {
+    const percentage = item.percentage;
+    const barWidth = Math.max(percentage, 5); // Minimum 5% for visibility
+    const barColor = percentage >= 80 ? '#10b981' : percentage >= 60 ? '#f59e0b' : '#ef4444';
+    
+    html += `
+      <div style="margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span style="font-weight: 600; color: #1e293b;">${item.type}</span>
+          <span style="font-weight: 700; color: ${barColor};">${percentage.toFixed(0)}%</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="flex: 1; height: 28px; background: #e2e8f0; border-radius: 14px; overflow: hidden;">
+            <div style="height: 100%; background: ${barColor}; width: ${barWidth}%; transition: width 0.3s ease;"></div>
+          </div>
+          <span style="font-size: 14px; color: #64748b; min-width: 80px;">${item.correct}/${item.total}</span>
+        </div>
+      </div>
+    `;
+  });
+  
+  chartDiv.innerHTML = html;
+}
+
+function buildCategoryPerformanceChart() {
+  const chartDiv = document.getElementById('categoryPerformanceChart');
+  if (!chartDiv) return;
+  
+  const performance = getCategoryPerformance();
+  const categories = Object.entries(performance)
+    .map(([category, data]) => ({
+      category,
+      ...data
+    }))
+    .sort((a, b) => b.percentage - a.percentage);
+  
+  if (categories.length === 0) {
+    chartDiv.innerHTML = '<div style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No data yet. Complete a quiz to see your performance by category.</div>';
+    return;
+  }
+  
+  let html = '';
+  categories.forEach(item => {
+    const percentage = item.percentage;
+    const barWidth = Math.max(percentage, 5);
+    const barColor = percentage >= 80 ? '#10b981' : percentage >= 60 ? '#f59e0b' : '#ef4444';
+    
+    html += `
+      <div style="margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span style="font-weight: 600; color: #1e293b;">${item.category}</span>
+          <span style="font-weight: 700; color: ${barColor};">${percentage.toFixed(0)}%</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="flex: 1; height: 24px; background: #e2e8f0; border-radius: 12px; overflow: hidden;">
+            <div style="height: 100%; background: ${barColor}; width: ${barWidth}%; transition: width 0.3s ease;"></div>
+          </div>
+          <span style="font-size: 14px; color: #64748b; min-width: 80px;">${item.correct}/${item.total}</span>
+        </div>
+      </div>
+    `;
+  });
+  
+  chartDiv.innerHTML = html;
+}
+
+function buildWeakestCategoriesSection() {
+  const sectionDiv = document.getElementById('weakestCategories');
+  if (!sectionDiv) return;
+  
+  const weakest = getWeakestCategories(5);
+  
+  if (weakest.length === 0) {
+    sectionDiv.innerHTML = '<div style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No categories with enough attempts yet.</div>';
+    return;
+  }
+  
+  let html = '';
+  weakest.forEach((item, index) => {
+    const percentage = item.percentage;
+    const priority = index < 3 ? `⚠️ PRIORITY #${index + 1}` : '';
+    
+    html += `
+      <div style="margin-bottom: 16px; padding: 16px; background: ${percentage < 60 ? '#fee2e2' : '#fef3c7'}; border-radius: 8px; border: 2px solid ${percentage < 60 ? '#ef4444' : '#f59e0b'};">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-weight: 700; color: #1e293b;">${index + 1}. ${item.category}</span>
+          <span style="font-weight: 700; color: #1e293b;">${percentage.toFixed(0)}%</span>
+        </div>
+        <div style="font-size: 14px; color: #64748b; margin-bottom: 8px;">${item.correct}/${item.total} questions</div>
+        ${priority ? `<div style="font-size: 13px; font-weight: 600; color: #dc2626;">${priority}</div>` : ''}
+      </div>
+    `;
+  });
+  
+  html += `<div style="margin-top: 16px; padding: 12px; background: #dbeafe; border-radius: 8px; font-size: 14px; color: #1e3a8a;">💡 <strong>Tip:</strong> Practice these categories to improve your overall score!</div>`;
+  
+  sectionDiv.innerHTML = html;
+}
+
+function buildMostMissedSection() {
+  const sectionDiv = document.getElementById('mostMissedQuestions');
+  if (!sectionDiv) return;
+  
+  const mostMissed = getMostMissedQuestions(10);
+  
+  if (mostMissed.length === 0) {
+    sectionDiv.innerHTML = '<div style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No missed questions yet. Great job! 🎉</div>';
+    return;
+  }
+  
+  let html = '';
+  mostMissed.forEach(item => {
+    html += `
+      <div style="margin-bottom: 16px; padding: 16px; background: #fef3c7; border-radius: 8px; border: 2px solid #f59e0b;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-weight: 700; color: #1e293b;">Question ${item.questionNum}</span>
+          <span style="font-weight: 700; color: #dc2626;">Missed ${item.missCount}×</span>
+        </div>
+        <div style="font-size: 14px; color: #64748b; margin-bottom: 8px;">
+          Category: ${item.category} | Type: ${formatTypeName(item.type)}
+        </div>
+        <div style="font-size: 13px; color: #78350f;">
+          ${item.attempts} total attempts
+        </div>
+      </div>
+    `;
+  });
+  
+  sectionDiv.innerHTML = html;
+}
+
+function updateScoreDisplay() {
+  const statsDiv = document.getElementById('scoreStats');
+  if (!statsDiv) return;
+  
+  const history = getScoreHistory();
+  const missed = getMissedQuestions();
+  
+  if (history.length === 0 && missed.length === 0) {
+    statsDiv.innerHTML = '<p style="color: #64748b; font-style: italic; margin: 0;">No data yet. Complete a quiz to see your stats!</p>';
+    return;
+  }
+  
+  let html = '';
+  
+  // Missed questions count
+  if (missed.length > 0) {
+    html += `<p style="margin: 0 0 8px 0;"><strong>📌 Missed Questions:</strong> ${missed.length} question${missed.length !== 1 ? 's' : ''}</p>`;
+  }
+  
+  // Score history stats
+  if (history.length > 0) {
+    const recent = history[history.length - 1];
+    const average = Math.round(history.reduce((sum, s) => sum + s.percentage, 0) / history.length);
+    const best = Math.max(...history.map(s => s.percentage));
+    
+    html += `<p style="margin: 0 0 8px 0;"><strong>📊 Tests Taken:</strong> ${history.length}</p>`;
+    html += `<p style="margin: 0 0 8px 0;"><strong>🎯 Average Score:</strong> ${average}%</p>`;
+    html += `<p style="margin: 0 0 8px 0;"><strong>⭐ Best Score:</strong> ${best}%</p>`;
+    html += `<p style="margin: 0;"><strong>📅 Last Score:</strong> ${recent.percentage}% (${recent.score}/${recent.total})</p>`;
+  }
+  
+  statsDiv.innerHTML = html;
+}
+
+function shuffleInPlace(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function getQuestionNumber(q, idx) {
+  // Prefer explicit id (number-like) if present.
+  const raw = q && (q.id ?? q.qid ?? q.number);
+  const n = raw != null ? Number(raw) : NaN;
+  return Number.isFinite(n) ? n : (idx + 1);
+}
+
+function getCategoryValue(q) {
+  // Safe heuristic: only use if a simple scalar exists.
+  const v = q && (q.category ?? q.domain ?? q.topic ?? q.section);
+  if (v == null) return null;
+  const s = String(v).trim();
+  return s ? s : null;
+}
+
+function parseRangeString(s) {
+  // Supports "5-10,21,33-40". Returns Set of numbers.
+  const out = new Set();
+  if (!s) return out;
+  const parts = String(s).split(',').map(p => p.trim()).filter(Boolean);
+  for (const p of parts) {
+    const m = p.match(/^(\d+)\s*-\s*(\d+)$/);
+    if (m) {
+      let a = Number(m[1]);
+      let b = Number(m[2]);
+      if (!Number.isFinite(a) || !Number.isFinite(b)) continue;
+      if (a > b) [a, b] = [b, a];
+      for (let i = a; i <= b; i++) out.add(i);
+      continue;
+    }
+    const n = Number(p);
+    if (Number.isFinite(n)) out.add(n);
+  }
+  return out;
+}
+
+function parseAnswer(answer) {
+  // Supports: "A", "AC", "A,C", "A C", ["A","C"], "A and C"
+  if (Array.isArray(answer)) {
+    return answer.map(String).map(s => s.trim()).filter(Boolean);
+  }
+  if (!answer) return [];
+  const s = String(answer).toUpperCase();
+  const letters = s.match(/[A-Z]/g) || [];
+  // Most of your keys are A-D; filter accordingly.
+  return letters.filter(ch => ['A','B','C','D','E','F'].includes(ch));
+}
+
+function normalizeOptions(q) {
+  // Prefer explicit "choices" array like ["A. ...", "B. ..."]
+  const map = {};
+  if (Array.isArray(q.choices)) {
+    q.choices.forEach(c => {
+      const s = String(c);
+      const m = s.match(/^\s*([A-F])\s*[\.|\)|:|-]\s*(.*)$/i);
+      if (m) map[m[1].toUpperCase()] = m[2].trim();
+    });
+  } else if (q.choices && typeof q.choices === 'object') {
+    // Also support object form: { A: "...", B: "..." }
+    Object.entries(q.choices).forEach(([k, v]) => {
+      const key = String(k).trim().toUpperCase().replace(/\.$/, '');
+      if (['A','B','C','D','E','F'].includes(key)) {
+        map[key] = String(v).trim();
+      }
+    });
+  }
+  // Fallbacks if your other JSON uses different fields
+  if (q.options && typeof q.options === 'object') {
+    Object.entries(q.options).forEach(([k,v]) => map[String(k).toUpperCase()] = String(v));
+  }
+  return map;
+}
+
+function renderDragDrop(q, container) {
+  // HTML5 Drag and Drop implementation
+  
+  const info = document.createElement('div');
+  info.style.marginBottom = '24px';
+  info.style.padding = '16px 20px';
+  info.style.background = 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)';
+  info.style.borderRadius = '10px';
+  info.style.border = '2px solid #3b82f6';
+  info.style.display = 'flex';
+  info.style.justifyContent = 'space-between';
+  info.style.alignItems = 'center';
+  info.style.gap = '16px';
+  info.style.flexWrap = 'wrap';
+  
+  const infoText = document.createElement('span');
+  infoText.style.color = '#1e40af';
+  infoText.style.fontWeight = '600';
+  infoText.style.fontSize = '16px';
+  infoText.textContent = '🎯 Drag items from the pool into the correct category boxes';
+  info.appendChild(infoText);
+  
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'secondary';
+  resetBtn.textContent = '↺ Reset';
+  resetBtn.addEventListener('click', () => {
+    answers[index] = {};
+    render();
+  });
+  info.appendChild(resetBtn);
+  
+  container.appendChild(info);
+
+  // Track selections: { zone_id: [draggable_ids] }
+  if (!answers[index]) answers[index] = {};
+
+  // Create main layout: draggables pool on left, drop zones on right
+  const mainGrid = document.createElement('div');
+  mainGrid.style.display = 'grid';
+  mainGrid.style.gridTemplateColumns = '1fr 1fr';
+  mainGrid.style.gap = '24px';
+  mainGrid.style.marginTop = '20px';
+  
+  // Responsive: stack on mobile
+  if (window.innerWidth < 768) {
+    mainGrid.style.gridTemplateColumns = '1fr';
+  }
+
+  // LEFT SIDE: Draggables Pool
+  const poolContainer = document.createElement('div');
+  poolContainer.style.padding = '20px';
+  poolContainer.style.background = '#f1f5f9';
+  poolContainer.style.borderRadius = '12px';
+  poolContainer.style.border = '2px solid #cbd5e1';
+  poolContainer.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
+
+  const poolTitle = document.createElement('div');
+  poolTitle.style.fontSize = '18px';
+  poolTitle.style.fontWeight = '700';
+  poolTitle.style.marginBottom = '16px';
+  poolTitle.style.color = '#1e293b';
+  poolTitle.style.textTransform = 'uppercase';
+  poolTitle.style.letterSpacing = '0.5px';
+  poolTitle.textContent = 'Available Items';
+  poolContainer.appendChild(poolTitle);
+
+  const poolItems = document.createElement('div');
+  poolItems.id = 'draggable-pool';
+  poolItems.style.minHeight = '200px';
+  poolItems.style.padding = '12px';
+  poolItems.style.borderRadius = '8px';
+  poolItems.style.transition = 'all 0.2s ease';
+  
+  // Make pool a drop zone too (for returning items)
+  poolItems.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    poolItems.style.background = '#dbeafe';
+    poolItems.style.borderRadius = '8px';
+  });
+
+  poolItems.addEventListener('dragleave', (e) => {
+    poolItems.style.background = 'transparent';
+  });
+
+  poolItems.addEventListener('drop', (e) => {
+    e.preventDefault();
+    poolItems.style.background = 'transparent';
+    
+    const dragId = e.dataTransfer.getData('text/plain');
+    const dragItem = document.querySelector(`[data-drag-id="${dragId}"]`);
+    
+    if (dragItem) {
+      // Remove from all zones in answers object
+      for (const zId in answers[index]) {
+        const idx = answers[index][zId].indexOf(dragId);
+        if (idx > -1) {
+          answers[index][zId].splice(idx, 1);
+        }
+      }
+
+      // Move DOM element back to pool
+      poolItems.appendChild(dragItem);
+      
+      // Success animation
+      dragItem.style.animation = 'dropSuccess 0.3s ease';
+      setTimeout(() => {
+        dragItem.style.animation = '';
+      }, 300);
+    }
+  });
+  
+  poolContainer.appendChild(poolItems);
+
+  // RIGHT SIDE: Drop Zones
+  const zonesContainer = document.createElement('div');
+  zonesContainer.style.display = 'flex';
+  zonesContainer.style.flexDirection = 'column';
+  zonesContainer.style.gap = '16px';
+
+  // Create draggable items
+  q.draggables.forEach(drag => {
+    const item = createDraggableItem(drag, q);
+    
+    // Check if already placed in a zone
+    let placed = false;
+    for (const zoneId in answers[index]) {
+      if (answers[index][zoneId] && answers[index][zoneId].includes(drag.id)) {
+        placed = true;
+        break;
+      }
+    }
+    
+    if (!placed) {
+      poolItems.appendChild(item);
+    }
+  });
+
+  // Create drop zones
+  q.drop_zones.forEach(zone => {
+    const zoneDiv = createDropZone(zone, q);
+    
+    // Add already-placed items to this zone
+    if (answers[index][zone.id] && answers[index][zone.id].length > 0) {
+      const zoneItems = zoneDiv.querySelector('.zone-items');
+      answers[index][zone.id].forEach(dragId => {
+        const drag = q.draggables.find(d => d.id === dragId);
+        if (drag) {
+          const item = createDraggableItem(drag, q);
+          zoneItems.appendChild(item);
+        }
+      });
+    }
+    
+    zonesContainer.appendChild(zoneDiv);
+  });
+
+  mainGrid.appendChild(poolContainer);
+  mainGrid.appendChild(zonesContainer);
+  container.appendChild(mainGrid);
+}
+
+function createDraggableItem(drag, question) {
+  const item = document.createElement('div');
+  item.draggable = true;
+  item.dataset.dragId = drag.id;
+  item.className = 'draggable-item';
+  item.style.padding = '14px 18px';
+  item.style.margin = '8px 0';
+  item.style.background = '#ffffff';
+  item.style.border = '2px solid #3b82f6';
+  item.style.borderRadius = '10px';
+  item.style.cursor = 'grab';
+  item.style.fontSize = '16px';
+  item.style.transition = 'all 0.2s ease';
+  item.style.userSelect = 'none';
+  item.style.boxShadow = '0 2px 8px rgba(37, 99, 235, 0.15)';
+  item.style.fontWeight = '500';
+  item.textContent = drag.text;
+
+  // Drag events
+  item.addEventListener('dragstart', (e) => {
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', drag.id);
+    item.style.opacity = '0.5';
+    item.style.cursor = 'grabbing';
+  });
+
+  item.addEventListener('dragend', (e) => {
+    item.style.opacity = '1';
+    item.style.cursor = 'grab';
+  });
+
+  // Visual feedback on hover
+  item.addEventListener('mouseenter', () => {
+    item.style.transform = 'translateY(-2px)';
+    item.style.boxShadow = '0 6px 16px rgba(37, 99, 235, 0.3)';
+    item.style.borderColor = '#2563eb';
+    item.style.background = '#dbeafe';
+  });
+
+  item.addEventListener('mouseleave', () => {
+    item.style.transform = 'translateY(0)';
+    item.style.boxShadow = '0 2px 8px rgba(37, 99, 235, 0.15)';
+    item.style.borderColor = '#3b82f6';
+    item.style.background = '#ffffff';
+  });
+
+  // Touch support for mobile/tablet (iOS Safari, iPad)
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let isDragging = false;
+  let clone = null;
+  
+  item.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    const touch = e.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    
+    // Create visual clone
+    clone = item.cloneNode(true);
+    clone.style.position = 'fixed';
+    clone.style.pointerEvents = 'none';
+    clone.style.opacity = '0.7';
+    clone.style.zIndex = '10000';
+    clone.style.left = touch.clientX - 50 + 'px';
+    clone.style.top = touch.clientY - 20 + 'px';
+    document.body.appendChild(clone);
+    
+    item.style.opacity = '0.3';
+  });
+  
+  item.addEventListener('touchmove', (e) => {
+    if (!isDragging || !clone) return;
+    e.preventDefault();
+    
+    const touch = e.touches[0];
+    clone.style.left = touch.clientX - 50 + 'px';
+    clone.style.top = touch.clientY - 20 + 'px';
+  });
+  
+  item.addEventListener('touchend', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const touch = e.changedTouches[0];
+    const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+    
+    // Find the drop zone (look up the DOM tree)
+    let zoneDiv = dropTarget;
+    while (zoneDiv && !zoneDiv.dataset.zoneId) {
+      zoneDiv = zoneDiv.parentElement;
+      // Stop if we hit the pool
+      if (zoneDiv && zoneDiv.id === 'draggable-pool') break;
+    }
+    
+    // Remove clone
+    if (clone && clone.parentNode) {
+      clone.parentNode.removeChild(clone);
+    }
+    clone = null;
+    item.style.opacity = '1';
+    
+    // Handle drop
+    if (zoneDiv && zoneDiv.dataset.zoneId) {
+      // Dropped in a zone
+      const zoneId = zoneDiv.dataset.zoneId;
+      
+      // Remove from previous location
+      for (const zId in answers[index]) {
+        const idx = answers[index][zId].indexOf(drag.id);
+        if (idx > -1) {
+          answers[index][zId].splice(idx, 1);
+        }
+      }
+      
+      // Add to new zone
+      if (!answers[index][zoneId]) {
+        answers[index][zoneId] = [];
+      }
+      if (!answers[index][zoneId].includes(drag.id)) {
+        answers[index][zoneId].push(drag.id);
+      }
+      
+      // Move DOM element
+      const zoneItems = zoneDiv.querySelector('.zone-items');
+      if (zoneItems) {
+        zoneItems.appendChild(item);
+      }
+      
+      // Success animation
+      item.style.animation = 'dropSuccess 0.3s ease';
+      setTimeout(() => {
+        item.style.animation = '';
+      }, 300);
+    } else if (zoneDiv && zoneDiv.id === 'draggable-pool') {
+      // Dropped back in pool
+      for (const zId in answers[index]) {
+        const idx = answers[index][zId].indexOf(drag.id);
+        if (idx > -1) {
+          answers[index][zId].splice(idx, 1);
+        }
+      }
+      
+      // Move back to pool
+      zoneDiv.appendChild(item);
+      
+      // Success animation
+      item.style.animation = 'dropSuccess 0.3s ease';
+      setTimeout(() => {
+        item.style.animation = '';
+      }, 300);
+    }
+  });
+
+  return item;
+}
+
+function createDropZone(zone, question) {
+  const zoneDiv = document.createElement('div');
+  zoneDiv.dataset.zoneId = zone.id;
+  zoneDiv.style.padding = '20px';
+  zoneDiv.style.background = '#f1f5f9';
+  zoneDiv.style.borderRadius = '12px';
+  zoneDiv.style.border = '2px dashed #94a3b8';
+  zoneDiv.style.minHeight = '150px';
+  zoneDiv.style.transition = 'all 0.2s ease';
+
+  const zoneLabel = document.createElement('div');
+  zoneLabel.style.fontSize = '20px';
+  zoneLabel.style.fontWeight = '700';
+  zoneLabel.style.marginBottom = '16px';
+  zoneLabel.style.color = '#1e40af';
+  zoneLabel.style.textTransform = 'uppercase';
+  zoneLabel.style.letterSpacing = '0.5px';
+  zoneLabel.textContent = zone.label;
+  zoneDiv.appendChild(zoneLabel);
+
+  const zoneItems = document.createElement('div');
+  zoneItems.className = 'zone-items';
+  zoneItems.style.minHeight = '100px';
+  zoneDiv.appendChild(zoneItems);
+
+  // Drop zone events
+  zoneDiv.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    zoneDiv.style.background = '#dbeafe';
+    zoneDiv.style.borderColor = '#2563eb';
+    zoneDiv.style.borderStyle = 'solid';
+    zoneDiv.style.boxShadow = '0 4px 16px rgba(37, 99, 235, 0.2)';
+  });
+
+  zoneDiv.addEventListener('dragleave', (e) => {
+    // Only reset if we're actually leaving the zone (not entering a child)
+    if (e.target === zoneDiv) {
+      zoneDiv.style.background = '#f1f5f9';
+      zoneDiv.style.borderColor = '#94a3b8';
+      zoneDiv.style.borderStyle = 'dashed';
+      zoneDiv.style.boxShadow = 'none';
+    }
+  });
+
+  zoneDiv.addEventListener('drop', (e) => {
+    e.preventDefault();
+    zoneDiv.style.background = '#f1f5f9';
+    zoneDiv.style.borderColor = '#94a3b8';
+    zoneDiv.style.borderStyle = 'dashed';
+    zoneDiv.style.boxShadow = 'none';
+
+    const dragId = e.dataTransfer.getData('text/plain');
+    const dragItem = document.querySelector(`[data-drag-id="${dragId}"]`);
+    
+    if (dragItem) {
+      // Remove from previous location in answers object
+      for (const zId in answers[index]) {
+        const idx = answers[index][zId].indexOf(dragId);
+        if (idx > -1) {
+          answers[index][zId].splice(idx, 1);
+        }
+      }
+
+      // Add to new zone in answers object
+      if (!answers[index][zone.id]) {
+        answers[index][zone.id] = [];
+      }
+      if (!answers[index][zone.id].includes(dragId)) {
+        answers[index][zone.id].push(dragId);
+      }
+
+      // Move DOM element to this zone
+      zoneItems.appendChild(dragItem);
+      
+      // Success animation
+      dragItem.style.animation = 'dropSuccess 0.3s ease';
+      setTimeout(() => {
+        dragItem.style.animation = '';
+      }, 300);
+    }
+  });
+
+  // Add CSS animation if not already added
+  if (!document.getElementById('dragDropStyles')) {
+    const style = document.createElement('style');
+    style.id = 'dragDropStyles';
+    style.textContent = `
+      @keyframes dropSuccess {
+        0% { transform: scale(1.1); background: #c8e6c9; }
+        100% { transform: scale(1); background: #fff; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Also make the zone items container droppable
+  zoneItems.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  });
+
+  zoneItems.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const dragId = e.dataTransfer.getData('text/plain');
+    const dragItem = document.querySelector(`[data-drag-id="${dragId}"]`);
+    
+    if (dragItem) {
+      // Remove from previous location
+      for (const zId in answers[index]) {
+        const idx = answers[index][zId].indexOf(dragId);
+        if (idx > -1) {
+          answers[index][zId].splice(idx, 1);
+        }
+      }
+
+      // Add to new zone
+      if (!answers[index][zone.id]) {
+        answers[index][zone.id] = [];
+      }
+      if (!answers[index][zone.id].includes(dragId)) {
+        answers[index][zone.id].push(dragId);
+      }
+
+      // Move DOM element
+      zoneItems.appendChild(dragItem);
+      
+      // Success animation
+      dragItem.style.animation = 'dropSuccess 0.3s ease';
+      setTimeout(() => {
+        dragItem.style.animation = '';
+      }, 300);
+    }
+  });
+
+  return zoneDiv;
+}
+
+function render() {
+  const q = quizList[index];
+  document.getElementById('meta').textContent = `Question: ${index + 1}/${quizList.length}`;
+  document.getElementById('question').textContent = q.question || '';
+  
+  // Update progress indicator with visual bar
+  const answered = Object.keys(answers).filter(k => answers[k] && (Array.isArray(answers[k]) ? answers[k].length : Object.keys(answers[k]).length)).length;
+  const progressDiv = document.getElementById('progressIndicator');
+  if (progressDiv) {
+    const percentage = Math.round((answered / quizList.length) * 100);
+    progressDiv.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="flex: 1; background: #e2e8f0; height: 24px; border-radius: 12px; overflow: hidden; min-width: 200px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);">
+          <div style="background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%); height: 100%; width: ${percentage}%; transition: width 0.3s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px;">
+            ${percentage > 10 ? `<span style="color: white; font-size: 12px; font-weight: 700;">${percentage}%</span>` : ''}
+          </div>
+        </div>
+        <span style="font-size: 14px; font-weight: 600; color: #64748b; min-width: 80px;">${answered}/${quizList.length}</span>
+      </div>
+    `;
+  }
+
+  // Reset feedback UI per question
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'none';
+  fb.className = '';
+  fb.textContent = '';
+  document.getElementById('nextBtn').textContent = 'Next';
+
+  // Exhibit (optional) — pilot JSON uses { exhibit: { src, caption? } }
+  const ex = document.getElementById('exhibit');
+  ex.innerHTML = '';
+  const exObj = q.exhibit;
+  const exSrc = exObj && (exObj.src || exObj.file || exObj.path || exObj.url);
+  if (exSrc) {
+    const img = document.createElement('img');
+    img.src = exSrc;
+    img.onerror = () => {
+      // If the src is a bare filename, try common subfolder fallbacks
+      if (!exSrc.includes('/') && !img.dataset._retried) {
+        img.dataset._retried = '1';
+        img.src = 'exhibits/' + exSrc;
+      }
+    };
+    img.alt = 'Exhibit';
+    ex.appendChild(img);
+
+    const cap = document.createElement('div');
+    cap.className = 'exhibit-caption';
+    cap.textContent = (exObj.caption || 'Exhibit');
+    ex.appendChild(cap);
+  }
+
+  // Options
+  const opts = document.getElementById('options');
+  opts.innerHTML = '';
+
+  // Handle drag-and-drop questions differently
+  if (q.questionType === 'drag-drop' && q.draggables && q.drop_zones) {
+    renderDragDrop(q, opts);
+    return;
+  }
+
+  // Handle MCQ questions
+  const optMap = normalizeOptions(q);
+  const keys = Object.keys(optMap);
+
+  if (keys.length === 0) {
+    const warn = document.createElement('div');
+    warn.className = 'hint';
+    warn.textContent = 'No answer choices were found for this question. Verify the JSON has a "choices" array.';
+    opts.appendChild(warn);
+    return;
+  }
+
+  const correct = parseAnswer(q.answer);
+  const isMulti = correct.length > 1;
+
+  // Keep stable order A..F
+  const orderedKeys = ['A','B','C','D','E','F'].filter(k => optMap[k] != null);
+
+  orderedKeys.forEach(k => {
+    const wrap = document.createElement('div');
+    wrap.className = 'option';
+
+    const label = document.createElement('label');
+
+    const input = document.createElement('input');
+    input.type = isMulti ? 'checkbox' : 'radio';
+    input.name = 'ans';
+    input.value = k;
+
+    const saved = answers[index] || [];
+    input.checked = saved.includes(k);
+
+    input.onchange = () => {
+      if (!isMulti) {
+        answers[index] = [k];
+      } else {
+        const current = new Set(answers[index] || []);
+        if (input.checked) current.add(k); else current.delete(k);
+        answers[index] = Array.from(current);
+      }
+    };
+
+    const letter = document.createElement('strong');
+    letter.textContent = `${k}.`;
+
+    label.appendChild(input);
+    label.appendChild(document.createTextNode(' '));
+    label.appendChild(letter);
+    label.appendChild(document.createTextNode(' ' + String(optMap[k])));
+
+    wrap.appendChild(label);
+    opts.appendChild(wrap);
+  });
+}
+
+
+function gradeQuestion(q, selected) {
+  const correct = new Set(parseAnswer(q.answer));
+  const chosen = new Set(selected || []);
+  let ok = correct.size === chosen.size;
+  if (ok) {
+    for (const v of correct) if (!chosen.has(v)) ok = false;
+  }
+  return { ok, correct: Array.from(correct).sort() };
+}
+
+function gradeDragDrop(q, userMapping) {
+  // userMapping is { zone_id: [draggable_ids] }
+  // q.answer.mapping is the correct mapping
+  
+  if (!q.answer || !q.answer.mapping || typeof userMapping !== 'object') {
+    return { ok: false, correct: [] };
+  }
+  
+  const correctMapping = q.answer.mapping;
+  let allCorrect = true;
+  
+  // Check each zone
+  for (const zoneId in correctMapping) {
+    const correctItems = new Set(correctMapping[zoneId] || []);
+    const userItems = new Set(userMapping[zoneId] || []);
+    
+    // Must have same size
+    if (correctItems.size !== userItems.size) {
+      allCorrect = false;
+      break;
+    }
+    
+    // Must have same items
+    for (const item of correctItems) {
+      if (!userItems.has(item)) {
+        allCorrect = false;
+        break;
+      }
+    }
+    
+    if (!allCorrect) break;
+  }
+  
+  return { ok: allCorrect, correct: correctMapping };
+}
+
+function buildQuestionReview(filterMissedOnly = false) {
+  const reviewList = document.getElementById('reviewList');
+  if (!reviewList) return;
+  
+  reviewList.innerHTML = '';
+  
+  let displayedCount = 0;
+  
+  results.forEach((r, i) => {
+    const q = quizList[i];
+    const qnum = getQuestionNumber(q, i);
+    const isCorrect = r && r.ok;
+    
+    // Filter logic
+    if (filterMissedOnly && isCorrect) return;
+    
+    displayedCount++;
+    
+    // Create review item
+    const item = document.createElement('div');
+    item.style.marginBottom = '12px';
+    item.style.padding = '16px';
+    item.style.background = '#ffffff';
+    item.style.border = `2px solid ${isCorrect ? '#10b981' : '#ef4444'}`;
+    item.style.borderRadius = '8px';
+    item.style.cursor = 'pointer';
+    item.style.transition = 'all 0.2s ease';
+    
+    // Hover effect
+    item.addEventListener('mouseenter', () => {
+      item.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+      item.style.transform = 'translateY(-2px)';
+    });
+    
+    item.addEventListener('mouseleave', () => {
+      item.style.boxShadow = 'none';
+      item.style.transform = 'translateY(0)';
+    });
+    
+    // Header: icon + question number + truncated text
+    const header = document.createElement('div');
+    header.style.display = 'flex';
+    header.style.alignItems = 'center';
+    header.style.gap = '12px';
+    
+    const icon = document.createElement('span');
+    icon.style.fontSize = '24px';
+    icon.style.fontWeight = '700';
+    icon.textContent = isCorrect ? '✓' : '✗';
+    icon.style.color = isCorrect ? '#10b981' : '#ef4444';
+    
+    const textContainer = document.createElement('div');
+    textContainer.style.flex = '1';
+    
+    const qnumSpan = document.createElement('strong');
+    qnumSpan.textContent = `Question ${qnum}: `;
+    qnumSpan.style.color = '#1e293b';
+    qnumSpan.style.fontSize = '16px';
+    
+    const questionText = document.createElement('span');
+    const truncated = (q.question || '').substring(0, 80);
+    questionText.textContent = truncated + (q.question && q.question.length > 80 ? '...' : '');
+    questionText.style.color = '#475569';
+    questionText.style.fontSize = '15px';
+    
+    textContainer.appendChild(qnumSpan);
+    textContainer.appendChild(questionText);
+    
+    header.appendChild(icon);
+    header.appendChild(textContainer);
+    
+    // Details section (initially hidden)
+    const details = document.createElement('div');
+    details.style.display = 'none';
+    details.style.marginTop = '12px';
+    details.style.paddingTop = '12px';
+    details.style.borderTop = '1px solid #e2e8f0';
+    
+    const fullQuestion = document.createElement('p');
+    fullQuestion.style.margin = '0 0 12px 0';
+    fullQuestion.style.fontWeight = '600';
+    fullQuestion.style.color = '#1e293b';
+    fullQuestion.textContent = q.question;
+    details.appendChild(fullQuestion);
+    
+    // Show user's answer vs correct answer
+    const userAnswer = answers[i];
+    let userAnswerText = '';
+    let correctAnswerText = '';
+    
+    if (q.questionType === 'drag-drop') {
+      // Drag-drop answer formatting
+      const userMapping = userAnswer || {};
+      const correctMapping = q.answer?.mapping || {};
+      
+      userAnswerText = 'Your answer:\n';
+      for (const zoneId in userMapping) {
+        const zone = q.drop_zones.find(z => z.id === zoneId);
+        const items = userMapping[zoneId].map(dragId => {
+          const drag = q.draggables.find(d => d.id === dragId);
+          return drag ? drag.text : dragId;
+        });
+        userAnswerText += `  ${zone ? zone.label : zoneId}: ${items.join(', ')}\n`;
+      }
+      
+      correctAnswerText = 'Correct answer:\n';
+      for (const zoneId in correctMapping) {
+        const zone = q.drop_zones.find(z => z.id === zoneId);
+        const items = correctMapping[zoneId].map(dragId => {
+          const drag = q.draggables.find(d => d.id === dragId);
+          return drag ? drag.text : dragId;
+        });
+        correctAnswerText += `  ${zone ? zone.label : zoneId}: ${items.join(', ')}\n`;
+      }
+    } else {
+      // MCQ answer formatting
+      const userSelected = Array.isArray(userAnswer) ? userAnswer : [];
+      const correctSet = new Set(parseAnswer(q.answer));
+      
+      userAnswerText = `Your answer: ${userSelected.length ? userSelected.sort().join(', ') : '(none)'}`;
+      correctAnswerText = `Correct answer: ${Array.from(correctSet).sort().join(', ')}`;
+    }
+    
+    const userAnswerDiv = document.createElement('div');
+    userAnswerDiv.style.marginBottom = '8px';
+    userAnswerDiv.style.padding = '8px';
+    userAnswerDiv.style.background = isCorrect ? '#d1fae5' : '#fee2e2';
+    userAnswerDiv.style.borderRadius = '6px';
+    userAnswerDiv.style.whiteSpace = 'pre-wrap';
+    userAnswerDiv.style.fontSize = '14px';
+    userAnswerDiv.style.color = '#1e293b';
+    userAnswerDiv.textContent = userAnswerText;
+    details.appendChild(userAnswerDiv);
+    
+    if (!isCorrect) {
+      const correctAnswerDiv = document.createElement('div');
+      correctAnswerDiv.style.padding = '8px';
+      correctAnswerDiv.style.background = '#d1fae5';
+      correctAnswerDiv.style.borderRadius = '6px';
+      correctAnswerDiv.style.whiteSpace = 'pre-wrap';
+      correctAnswerDiv.style.fontSize = '14px';
+      correctAnswerDiv.style.color = '#1e293b';
+      correctAnswerDiv.textContent = correctAnswerText;
+      details.appendChild(correctAnswerDiv);
+    }
+    
+    // Click to toggle details
+    let expanded = false;
+    item.addEventListener('click', () => {
+      expanded = !expanded;
+      details.style.display = expanded ? 'block' : 'none';
+    });
+    
+    item.appendChild(header);
+    item.appendChild(details);
+    reviewList.appendChild(item);
+  });
+  
+  // Show message if no items to display
+  if (displayedCount === 0) {
+    const emptyMsg = document.createElement('div');
+    emptyMsg.style.textAlign = 'center';
+    emptyMsg.style.padding = '40px';
+    emptyMsg.style.color = '#64748b';
+    emptyMsg.style.fontSize = '16px';
+    emptyMsg.style.fontStyle = 'italic';
+    emptyMsg.textContent = filterMissedOnly ? 'No missed questions - perfect score! 🎉' : 'No questions to review.';
+    reviewList.appendChild(emptyMsg);
+  }
+}
+
+function showResults() {
+  // Stop timer if running
+  stopTimer();
+  document.getElementById('timerDisplay').style.display = 'none';
+  
+  const total = quizList.length;
+  const correctCount = results.filter(r => r && r.ok).length;
+  const pct = total ? Math.round((correctCount / total) * 100) : 0;
+
+  // Build missed list and update localStorage + analytics
+  const missed = [];
+  results.forEach((r, i) => {
+    if (!r) return;
+    const q = quizList[i];
+    const qnum = getQuestionNumber(q, i);
+    const category = q.category || 'Uncategorized';
+    const type = q.questionType || 'unknown';
+    
+    if (r.ok) {
+      // Got it right - remove from missed questions
+      removeMissedQuestion(qnum);
+    } else {
+      // Got it wrong - add to missed questions
+      missed.push(qnum);
+      addMissedQuestion(qnum);
+    }
+    
+    // Track analytics for every question
+    updateQuestionHistory(qnum, r.ok, category, type);
+    updateCategoryPerformance(category, r.ok);
+    updateTypePerformance(type, r.ok);
+  });
+
+  // Save score to history
+  addScoreToHistory({
+    correct: correctCount,
+    total: total,
+    percentage: pct
+  });
+  
+  // Update score display for next time
+  updateScoreDisplay();
+
+  document.getElementById('quiz').style.display = 'none';
+  const res = document.getElementById('results');
+  res.style.display = 'block';
+
+  const summary = document.getElementById('resultsSummary');
+  summary.textContent = `Score: ${correctCount}/${total} (${pct}%)`;
+
+  const details = document.getElementById('resultsDetails');
+  details.textContent = missed.length
+    ? `Missed question numbers:\n${missed.sort((a,b)=>a-b).join(', ')}`
+    : 'Perfect run ✅';
+  
+  // Build question review
+  buildQuestionReview(false);
+  
+  // Build compact analytics summary
+  buildCompactAnalytics();
+  
+  // Set initial filter button states (Show All is active by default)
+  document.getElementById('reviewFilterAll').style.background = 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)';
+  document.getElementById('reviewFilterAll').style.color = '#ffffff';
+  document.getElementById('reviewFilterAll').style.borderColor = '#2563eb';
+  document.getElementById('reviewFilterMissed').style.background = '#e2e8f0';
+  document.getElementById('reviewFilterMissed').style.color = '#1e293b';
+  document.getElementById('reviewFilterMissed').style.borderColor = '#cbd5e1';
+}
+
+function start() {
+  // Build config from UI (safe options only)
+  const numRaw = document.getElementById('numQuestions').value;
+  const n = numRaw ? Number(numRaw) : null;
+  config.numQuestions = (Number.isFinite(n) && n > 0) ? Math.floor(n) : null;
+
+  const catSel = document.getElementById('categorySelect');
+  config.category = catSel ? (catSel.value || '__ALL__') : '__ALL__';
+
+  const qtSel = document.getElementById('questionTypeSelect');
+  config.qtype = qtSel ? (qtSel.value || '__ALL__') : '__ALL__';
+
+  config.immediateFeedback = !!document.getElementById('immediateFeedback').checked;
+  config.sequential = !!document.getElementById('sequentialOrder').checked;
+
+  const rangeEnabled = !!document.getElementById('questionRangeEnabled').checked;
+  const rangeText = document.getElementById('questionRange').value;
+  config.range = rangeEnabled ? parseRangeString(rangeText) : null;
+
+  // Timer configuration
+  config.timerEnabled = !!document.getElementById('timerEnabled').checked;
+  if (config.timerEnabled) {
+    config.timerMode = document.getElementById('timerMode').value;
+    const durationVal = document.getElementById('timerDuration').value;
+    config.timerDuration = durationVal ? parseInt(durationVal) : (config.timerMode === 'total' ? 30 : 90);
+  }
+
+  // Build quiz list safely (do NOT touch exhibit rendering logic)
+  let pool = Array.isArray(questions) ? questions.slice() : [];
+
+  // Category filter (only if categories exist)
+  if (config.category && config.category !== '__ALL__') {
+    pool = pool.filter(q => getCategoryValue(q) === config.category);
+  }
+
+  // Range filter: targets q.id (if present) otherwise list index+1
+  if (config.range && config.range.size > 0) {
+    pool = pool.filter((q, idx) => config.range.has(getQuestionNumber(q, idx)));
+  }
+
+  // Question Type filter - using the actual questionType field from JSON
+  if (config.qtype && config.qtype !== '__ALL__') {
+    if (config.qtype === '__EXHIBITS__') {
+      // Special filter: all questions with exhibits
+      pool = pool.filter(q => q.questionType && q.questionType.includes('-exhibit'));
+    } else if (config.qtype === '__MISSED__') {
+      // Special filter: only missed questions
+      const missedQNums = getMissedQuestions();
+      if (missedQNums.length === 0) {
+        alert('No missed questions yet! Complete a quiz first.');
+        return;
+      }
+      pool = pool.filter((q, idx) => {
+        const qnum = getQuestionNumber(q, idx);
+        return missedQNums.includes(qnum);
+      });
+    } else {
+      // Direct match on questionType field
+      pool = pool.filter(q => q.questionType === config.qtype);
+    }
+  }
+
+  if (!config.sequential) {
+    shuffleInPlace(pool);
+  }
+
+  if (config.numQuestions != null) {
+    pool = pool.slice(0, config.numQuestions);
+  }
+
+  if (!pool.length) {
+    alert('No questions matched your filters. Try widening the selection (Category/Type/Range).');
+    return;
+  }
+
+  quizList = pool;
+  document.getElementById('setup').style.display = 'none';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('quiz').style.display = 'block';
+  index = 0;
+  answers = {};
+  feedbackShown = {};
+  results = [];
+  
+  // Start timer if enabled
+  startTimer();
+  
+  render();
+}
+
+function next() {
+  const q = quizList[index];
+  const selected = answers[index] || [];
+  
+  // Validation: different for drag-drop vs MCQ
+  if (q.questionType === 'drag-drop') {
+    // STRICTER VALIDATION: Check if all required zones are filled
+    const userMapping = answers[index] || {};
+    const hasAnySelection = Object.values(userMapping).some(arr => arr && arr.length > 0);
+    
+    if (!hasAnySelection) {
+      alert('Please place at least one item before continuing.');
+      return;
+    }
+    
+    // Check if all required zones have items (unless unused_draggables_allowed)
+    if (!q.unused_draggables_allowed) {
+      const requiredZones = q.drop_zones.filter(z => !z.optional);
+      const emptyZones = requiredZones.filter(zone => {
+        const placed = userMapping[zone.id] || [];
+        return placed.length === 0;
+      });
+      
+      if (emptyZones.length > 0) {
+        const zoneNames = emptyZones.map(z => z.label).join(', ');
+        alert(`Please place items in all zones before continuing.\n\nEmpty zones: ${zoneNames}`);
+        return;
+      }
+    }
+  } else {
+    // MCQ validation
+    if (selected.length === 0) {
+      alert('Select an answer before continuing.');
+      return;
+    }
+  }
+
+  // Immediate feedback mode: first click shows feedback, second click advances.
+  if (config.immediateFeedback && !feedbackShown[index]) {
+    let ok, correctStr;
+    
+    if (q.questionType === 'drag-drop') {
+      const result = gradeDragDrop(q, answers[index]);
+      ok = result.ok;
+      // Format correct answer display for drag-drop
+      const correctMapping = result.correct;
+      const lines = [];
+      for (const zoneId in correctMapping) {
+        const zone = q.drop_zones.find(z => z.id === zoneId);
+        const items = correctMapping[zoneId].map(dragId => {
+          const drag = q.draggables.find(d => d.id === dragId);
+          return drag ? drag.text : dragId;
+        });
+        lines.push(`${zone ? zone.label : zoneId}: ${items.join(', ')}`);
+      }
+      correctStr = lines.join('\n');
+    } else {
+      const correct = new Set(parseAnswer(q.answer));
+      const chosen = new Set(selected);
+      ok = correct.size === chosen.size;
+      if (ok) {
+        for (const v of correct) if (!chosen.has(v)) ok = false;
+      }
+      correctStr = Array.from(correct).sort().join(', ');
+    }
+
+    // Record result
+    results[index] = { ok, qnum: getQuestionNumber(q, index) };
+
+    // Disable inputs
+    document.querySelectorAll('#options input').forEach(i => i.disabled = true);
+
+    const fb = document.getElementById('feedback');
+    fb.style.display = 'block';
+    fb.className = 'feedback ' + (ok ? 'ok' : 'bad');
+    
+    if (q.questionType === 'drag-drop') {
+      fb.innerHTML = ok ? `✅ Correct` : `❌ Incorrect.<br><br><b>Correct answer:</b><br>${correctStr.replace(/\n/g, '<br>')}`;
+    } else {
+      fb.textContent = ok ? `✅ Correct` : `❌ Incorrect. Correct answer: ${correctStr}`;
+    }
+
+    feedbackShown[index] = true;
+    document.getElementById('nextBtn').textContent = 'Continue';
+    return;
+  }
+
+  // Record result if not already recorded (non-immediate mode)
+  if (!results[index]) {
+    let g;
+    if (q.questionType === 'drag-drop') {
+      g = gradeDragDrop(q, answers[index]);
+    } else {
+      g = gradeQuestion(q, selected);
+    }
+    results[index] = { ok: g.ok, qnum: getQuestionNumber(q, index) };
+  }
+
+  index++;
+  if (index >= quizList.length) {
+    showResults();
+    return;
+  }
+  render();
+}
+
+document.getElementById('startBtn').addEventListener('click', start);
+document.getElementById('nextBtn').addEventListener('click', next);
+
+document.getElementById('restartBtn').addEventListener('click', () => {
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('quiz').style.display = 'none';
+  document.getElementById('setup').style.display = 'block';
+  // Reset UI state
+  const nb = document.getElementById('nextBtn');
+  nb.textContent = 'Next';
+  // Update score display in case data changed
+  updateScoreDisplay();
+});
+
+// Question Review Filter Buttons
+document.getElementById('reviewFilterAll').addEventListener('click', () => {
+  buildQuestionReview(false);
+  // Update button styles to show which is active
+  document.getElementById('reviewFilterAll').style.background = 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)';
+  document.getElementById('reviewFilterAll').style.color = '#ffffff';
+  document.getElementById('reviewFilterAll').style.borderColor = '#2563eb';
+  document.getElementById('reviewFilterMissed').style.background = '#e2e8f0';
+  document.getElementById('reviewFilterMissed').style.color = '#1e293b';
+  document.getElementById('reviewFilterMissed').style.borderColor = '#cbd5e1';
+});
+
+document.getElementById('reviewFilterMissed').addEventListener('click', () => {
+  buildQuestionReview(true);
+  // Update button styles to show which is active
+  document.getElementById('reviewFilterMissed').style.background = 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)';
+  document.getElementById('reviewFilterMissed').style.color = '#ffffff';
+  document.getElementById('reviewFilterMissed').style.borderColor = '#2563eb';
+  document.getElementById('reviewFilterAll').style.background = '#e2e8f0';
+  document.getElementById('reviewFilterAll').style.color = '#1e293b';
+  document.getElementById('reviewFilterAll').style.borderColor = '#cbd5e1';
+});
+
+// End Quiz button - exit quiz early
+document.getElementById('endQuizBtn').addEventListener('click', () => {
+  if (confirm('Are you sure you want to end the quiz?\n\nYour progress will be saved, but incomplete questions will not be counted.')) {
+    showResults();
+  }
+});
+
+// Clear All Data button
+document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
+
+// Question Review filter buttons
+document.getElementById('reviewFilterAll').addEventListener('click', () => {
+  buildQuestionReview(false);
+});
+
+document.getElementById('reviewFilterMissed').addEventListener('click', () => {
+  buildQuestionReview(true);
+});
+
+// Analytics Dashboard Navigation
+document.getElementById('viewFullAnalyticsBtn').addEventListener('click', () => {
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('analytics').style.display = 'block';
+  buildFullAnalytics();
+});
+
+document.getElementById('backFromAnalyticsBtn').addEventListener('click', () => {
+  document.getElementById('analytics').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+});
+
+document.getElementById('backFromAnalyticsBtn2').addEventListener('click', () => {
+  document.getElementById('analytics').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+});
+
+// Keyboard Shortcuts
+document.addEventListener('keydown', (e) => {
+  // Don't trigger shortcuts if typing in an input field
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
+    return;
+  }
+  
+  const quizVisible = document.getElementById('quiz').style.display !== 'none';
+  const setupVisible = document.getElementById('setup').style.display !== 'none';
+  
+  // Only work when quiz is visible
+  if (quizVisible) {
+    // Space or Enter → Next question
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      document.getElementById('nextBtn').click();
+    }
+    
+    // Ctrl+E → End Quiz
+    if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+      e.preventDefault();
+      document.getElementById('endQuizBtn').click();
+    }
+    
+    // Number keys 1-6 → Select answers A-F (only for MCQ questions)
+    const q = quizList[index];
+    if (q && q.questionType !== 'drag-drop') {
+      if (e.key >= '1' && e.key <= '6') {
+        e.preventDefault();
+        const letterIndex = parseInt(e.key) - 1;
+        const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+        if (letterIndex < letters.length) {
+          const checkbox = document.getElementById(`opt_${letters[letterIndex]}`);
+          if (checkbox) {
+            checkbox.click();
+          }
+        }
+      }
+    }
+  }
+  
+  // Escape → Go back (works on results screen)
+  if (e.key === 'Escape') {
+    const resultsVisible = document.getElementById('results').style.display !== 'none';
+    if (resultsVisible) {
+      e.preventDefault();
+      document.getElementById('restartBtn').click();
+    }
+  }
+});
+
+// UI: Range toggle
+document.getElementById('questionRangeEnabled').addEventListener('change', (e) => {
+  document.getElementById('rangeField').style.display = e.target.checked ? 'block' : 'none';
+});
+
+// UI: Timer toggle
+document.getElementById('timerEnabled').addEventListener('change', (e) => {
+  document.getElementById('timerField').style.display = e.target.checked ? 'block' : 'none';
+});
+
+// ============================================
+// Exam Loading System
+// ============================================
+
+async function loadExamsList() {
+  try {
+    const response = await fetch(EXAMS_FOLDER + 'index.json');
+    const data = await response.json();
+    return data.exams || [];
+  } catch (e) {
+    console.error('Failed to load exams/index.json:', e);
+    alert('Failed to load exam list. Make sure exams/index.json exists.');
+    return [];
+  }
+}
+
+async function loadExamInfo(filename) {
+  try {
+    const response = await fetch(EXAMS_FOLDER + filename);
+    const data = await response.json();
+    return {
+      filename: filename,
+      examInfo: data.examInfo,
+      questionCount: data.questions ? data.questions.length : 0
+    };
+  } catch (e) {
+    console.error(`Failed to load exam info from ${filename}:`, e);
+    return null;
+  }
+}
+
+async function loadFullExam(filename) {
+  try {
+    const response = await fetch(EXAMS_FOLDER + filename);
+    const payload = await response.json();
+
+    // Support both formats:
+    // 1) { examInfo: {...}, questions: [...] }
+    // 2) [ ...questions ] (legacy)
+    const data = Array.isArray(payload)
+      ? { examInfo: { title: filename, subtitle: '' }, questions: payload }
+      : payload;
+
+    if (!data || !Array.isArray(data.questions)) {
+      throw new Error('Invalid exam format - missing questions array');
+    }
+
+    currentExam = data.examInfo || { title: filename, subtitle: '' };
+    allQuestions = data.questions;
+    
+    // Update storage keys for this exam
+    STORAGE_KEYS = getStorageKeys();
+    console.log('Storage keys updated:', STORAGE_KEYS);
+    
+    // Update title display
+    document.getElementById('examTitle').textContent = currentExam.title;
+    document.getElementById('examSubtitle').textContent = currentExam.subtitle;
+    
+    // Update page title
+    document.title = `${currentExam.title} - Practice Engine`;
+    
+    // Assign stable question numbers
+    allQuestions.forEach((q, i) => {
+      if (q && q._qnum == null) q._qnum = i + 1;
+    });
+
+    // Normalize MCQ choices (support array and object formats)
+    allQuestions.forEach(q => {
+      if (!q || q.questionType === 'drag-drop') return;
+      if (!Array.isArray(q.choices) && q.choices && typeof q.choices === 'object') {
+        const order = ['A','B','C','D','E','F','G','H'];
+        const arr = [];
+        for (const k of order) {
+          if (q.choices[k] != null) arr.push(`${k}. ${q.choices[k]}`);
+          else if (q.choices[`${k}.`] != null) arr.push(`${k}. ${q.choices[`${k}.`]}`);
+        }
+        q.choices = arr;
+      }
+    });
+    
+    // Set questions for the quiz engine
+    questions = allQuestions;
+
+    // Apply exhibit mapping if manifest has been loaded
+    if (typeof applyManifestExhibits === 'function') {
+      applyManifestExhibits(questions);
+    }
+
+    // Refresh category selector (now that questions are loaded)
+    hydrateCategories();
+    
+    // Update score display for this exam
+    updateScoreDisplay();
+
+    // Enable Start button now that an exam is loaded
+    const sb = document.getElementById('startBtn');
+    if (sb) { sb.disabled = false; sb.textContent = 'Start Quiz'; }
+    
+    console.log(`Loaded exam: ${currentExam.title} (${allQuestions.length} questions)`);
+    
+    return true;
+  } catch (e) {
+    console.error(`Failed to load full exam from ${filename}:`, e);
+    alert(`Failed to load exam: ${filename}`);
+    return false;
+  }
+}
+
+async function populateExamSelector() {
+  const examSelect = document.getElementById('examSelect');
+  
+  // Load list of exams
+  const examFiles = await loadExamsList();
+  
+  if (examFiles.length === 0) {
+    examSelect.innerHTML = '<option value="">No exams found</option>';
+    return;
+  }
+  
+  // Load info for each exam
+  availableExams = [];
+  for (const filename of examFiles) {
+    const examInfo = await loadExamInfo(filename);
+    if (examInfo) {
+      availableExams.push(examInfo);
+    }
+  }
+  
+  // Populate dropdown
+  examSelect.innerHTML = '';
+  availableExams.forEach(exam => {
+    const option = document.createElement('option');
+    option.value = exam.filename;
+    option.textContent = `${exam.examInfo.title} (${exam.questionCount} questions)`;
+    examSelect.appendChild(option);
+  });
+  
+  // Load first exam by default
+  if (availableExams.length > 0) {
+    examSelect.value = availableExams[0].filename;
+    await loadFullExam(availableExams[0].filename);
+  }
+}
+
+// Handle exam selection change
+document.getElementById('examSelect').addEventListener('change', async (e) => {
+  const filename = e.target.value;
+  if (filename) {
+    await loadFullExam(filename);
+  }
+});
+
+// Initialize exam system on page load
+populateExamSelector().then(() => {
+  console.log('Exam selector initialized');
+}).catch(e => {
+  console.error('Failed to initialize exam selector:', e);
+  document.getElementById('examTitle').textContent = 'Error Loading Exams';
+  document.getElementById('examSubtitle').textContent = 'Please check console for details';
+});
+
+// Exhibit manifest loader (AUTHORITATIVE)
+// Loads exhibits/manifest.json once, then applies it to whatever exam is currently loaded.
+// NOTE: This must NOT overwrite the active "questions" array (multi-exam support).
+
+
+
+function applyManifestExhibits(qs) {
+  if (!qs || !Array.isArray(qs) || exhibitMap.size === 0) return;
+
+  for (const [idx, q] of qs.entries()) {
+    if (!q) continue;
+    const qn = Number(q.question_number || q.id || q._qnum || (idx + 1));
+    if (!Number.isFinite(qn)) continue;
+
+    if (exhibitMap.has(qn)) {
+      const files = exhibitMap.get(qn) || [];
+      if (!files.length) continue;
+
+      // Prefix exhibit paths with exhibits/ unless already prefixed
+      const resolved = files.map(f => {
+        const s = String(f || '');
+        return s.startsWith('exhibits/') ? s : `exhibits/${s}`;
+      });
+
+      q.exhibit = {
+        src: resolved[0],
+        files: resolved
+      };
+    }
+  }
+}
+
+fetch('exhibits/manifest.json')
+  .then(r => r.json())
+  .then(mf => {
+    if (mf && Array.isArray(mf.items)) {
+      exhibitMap = new Map();
+      for (const it of mf.items) {
+        const qn = Number(it.question_number);
+        if (!Number.isFinite(qn)) continue;
+        const files = Array.isArray(it.files) ? it.files : [];
+        if (files.length) exhibitMap.set(qn, files);
+      }
+      // If an exam is already loaded, apply immediately
+      applyManifestExhibits(questions);
+    }
+  })
+  .catch(err => {
+    console.warn('Exhibit manifest not loaded (exhibits/manifest.json). Exhibits may not display.', err);
+  });
+
+// Populate category dropdown if categories exist
+function hydrateCategories() {
+  const cats = new Set();
+  (questions || []).forEach(q => {
+    const c = getCategoryValue(q);
+    if (c) cats.add(c);
+  });
+  const field = document.getElementById('categoryField');
+  const sel = document.getElementById('categorySelect');
+  if (!field || !sel) return;
+  if (cats.size === 0) {
+    field.style.display = 'none';
+    return;
+  }
+  field.style.display = 'block';
+  // reset options
+  sel.innerHTML = '';
+  const optAll = document.createElement('option');
+  optAll.value = '__ALL__';
+  optAll.textContent = 'All';
+  sel.appendChild(optAll);
+  Array.from(cats).sort().forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c;
+    opt.textContent = c;
+    sel.appendChild(opt);
+  });
+}
+
+// hydrateCategories() is called after the JSON loads.
+</script>
+</body>
+</html>
