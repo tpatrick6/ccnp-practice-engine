@@ -3476,7 +3476,7 @@
         "B": "policy-based automated provisioning of network",
         "C": "multiple technologies at multiple OSI layers",
         "D": "assurance",
-        "E": "centralization"
+        "E": "centralization",
         "F": "fabric"
       },
       "answer": "BDE",
