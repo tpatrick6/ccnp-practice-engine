@@ -5036,7 +5036,7 @@
         "D": "Link B - 172.20.1.68/30 Link C - 172.20.1.72/30 Link E - 172.20.1.76/30",
         "E": "Link B - 172.20.2.132/30 Link C - 172.20.2.136/30 Link E - 172.20.2.140/30"
       },
-      "answer": "AC",
+      "answer": "AD",
       "category": "General",
       "exhibit": {
         "type": "image",
