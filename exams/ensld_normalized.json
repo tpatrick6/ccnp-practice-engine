@@ -3476,9 +3476,10 @@
         "B": "policy-based automated provisioning of network",
         "C": "multiple technologies at multiple OSI layers",
         "D": "assurance",
-        "E": "centralization F. fabric"
+        "E": "centralization"
+        "F": "fabric"
       },
-      "answer": "BD",
+      "answer": "BDE",
       "category": "General",
       "questionType": "mcq-multiple"
     },
