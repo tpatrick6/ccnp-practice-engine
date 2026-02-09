@@ -3515,7 +3515,7 @@
         "C": "Server room 172.16.2.0/23 Remote site 172.16.4.64/26 Access site 172.16.5.16/28",
         "D": "Server room 172.16.4.0/22 Remote site 172.16.9.0/24 Access site 172.16.9.64/26"
       },
-      "answer": "D",
+      "answer": "B",
       "category": "General",
       "exhibit": {
         "type": "image",
