@@ -5334,20 +5334,6 @@
       "questionType": "drag-drop"
     },
     {
-      "category": "SD-WAN",
-      "question": "Drag and drop the descriptions from the left onto the Cisco SD-WAN component they describe on the right.",
-      "instructions": "Drag and drop. (Items/targets may appear in the PDF exhibit/answer area.)",
-      "draggables": [],
-      "drop_zones": [],
-      "answer": {
-        "mode": "mapping",
-        "mapping": {},
-        "unused_draggables_allowed": true,
-        "partial_credit": false
-      },
-      "questionType": "drag-drop"
-    },
-    {
       "category": "Telemetry",
       "question": "Drag and drop the model-driven telemetry characteristics from the left onto the mode they belong to on the right.",
       "instructions": "Select and place the characteristics into the correct telemetry mode.",
